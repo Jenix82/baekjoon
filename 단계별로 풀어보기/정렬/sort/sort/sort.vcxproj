@@ -140,7 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="10989.cpp" />
+    <ClCompile Include="11650.cpp" />
+    <ClCompile Include="11651.cpp" />
+    <ClCompile Include="1181.cpp" />
     <ClCompile Include="1427.cpp" />
+    <ClCompile Include="18870.cpp" />
     <ClCompile Include="2108.cpp" />
     <ClCompile Include="25305.cpp" />
     <ClCompile Include="2587.cpp" />
@@ -148,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="problems.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="18870 in500ms.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
