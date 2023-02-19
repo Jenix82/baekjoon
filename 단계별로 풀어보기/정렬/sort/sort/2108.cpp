@@ -10,7 +10,7 @@ using namespace std;
 
 bool cmpPair(pair<int, int>& p1, pair<int, int>& p2) {
 	if (p1.second == p2.second) return p1.first < p2.first;
-	return p1.second < p2.second;
+	return p1.second > p2.second;
 }
 
 void p2108()
@@ -32,12 +32,14 @@ void p2108()
 
 	vector<pair<int, int>> v(mp.begin(), mp.end());
 
+	double avg = accumulate(n.begin(), n.end(), 0) / (double)N;
+	if (avg > -0.5 && avg <= 0) avg = 0;
 	sort(n.begin(), n.end());
 	sort(v.begin(), v.end(), cmpPair);
 
-	printf("%d\n", accumulate(n.begin(), n.end(), 0));
+	printf("%.0f\n", avg);
 	printf("%d\n", n[(N - 1) / 2]);
-	//if (v.size() > 1) printf("%d\n", (v[0].second == v[1].second) ? v[1].first : v[0].first);
-	//else printf("%d\n", v[0].first);
+	if (v.size() > 1) printf("%d\n", (v[0].second == v[1].second) ? v[1].first : v[0].first);
+	else printf("%d\n", v[0].first);
 	printf("%d\n", M - m);
 }
