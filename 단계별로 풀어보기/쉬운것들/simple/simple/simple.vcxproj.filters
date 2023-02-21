@@ -36,6 +36,15 @@
     <ClCompile Include="25206.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="10798.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2501.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="9506.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="simple.h">

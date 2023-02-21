@@ -139,12 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="10798.cpp" />
     <ClCompile Include="10810.cpp" />
     <ClCompile Include="10811.cpp" />
     <ClCompile Include="10812.cpp" />
     <ClCompile Include="10813.cpp" />
     <ClCompile Include="2444.cpp" />
+    <ClCompile Include="2501.cpp" />
     <ClCompile Include="25206.cpp" />
+    <ClCompile Include="9506.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

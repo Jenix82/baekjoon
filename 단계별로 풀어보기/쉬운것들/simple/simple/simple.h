@@ -1,6 +1,9 @@
 #pragma once
 
 void p2444();
+void p2501();
+void p9506();
+void p10798();
 void p10810();
 void p10811();
 void p10812();
