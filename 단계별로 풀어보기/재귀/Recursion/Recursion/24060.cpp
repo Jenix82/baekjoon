@@ -4,42 +4,46 @@
 #include <cmath>
 using namespace std;
 
-// ?????
+vector<int> answer;
 
-void merge(vector<int>& A, int p, int q, int r)
+vector<int> merge_sort(vector<int> A)
 {
-	vector<int> tmp;
-	int i = p;
-	int j = q;
-	int t = 0;
+	if (A.size() <= 1) return A;
 
-	while (i <= q && j <= r)
+	int q = (A.size()-1) / 2;
+	vector<int> left(A.begin(), A.begin() + q + 1);
+	left = merge_sort(left);
+	vector<int> right(A.begin() + q + 1, A.end());
+	right = merge_sort(right);
+
+	int i = 0, j = 0;
+	vector<int> B;
+
+	while (i < left.size() && j < right.size())
 	{
-		if (A[i] <= A[j]) tmp.push_back(A[i++]);
-		else tmp.push_back(A[j++]);
+		if (left[i] < right[j])
+		{
+			B.push_back(left[i++]);
+			answer.push_back(B.back());
+		}
+		else
+		{
+			B.push_back(right[j++]);
+			answer.push_back(B.back());
+		}
+	}
+	while (i < left.size())
+	{
+		B.push_back(left[i++]);
+		answer.push_back(B.back());
+	}
+	while (j < right.size())
+	{
+		B.push_back(right[j++]);
+		answer.push_back(B.back());
 	}
 
-	while (i <= q) tmp.push_back(A[i++]);
-	while (j <= r) tmp.push_back(A[j++]);
-	
-	i = p;
-	t = 0;
-
-	while (i <= r) A[i++] = tmp[t++];
-
-	for (auto a : A) printf("%d ", a);
-	printf("\n");
-}
-
-void merge_sort(vector<int>& A, int p, int r)
-{
-	if (p < r)
-	{
-		int q = floor((p + r) / (double)2);
-		merge_sort(A, p, q);
-		merge_sort(A, q + 1, r);
-		merge(A, p, q, r);
-	}
+	return B;
 }
 
 void p24060()
@@ -49,7 +53,7 @@ void p24060()
 	vector<int> v(A);
 	for (int i = 0; i < A; i++) scanf("%d", &v[i]);
 
-	merge_sort(v, 0, A - 1);
-	for (auto a : v) printf("%d ", a);
-	printf("\n");
+	merge_sort(v);
+	if (answer.size() >= K) printf("%d\n", answer[K - 1]);
+	else printf("-1\n");
 }
