@@ -30,6 +30,15 @@
     <ClCompile Include="9461.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="1932.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1463.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1149.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DynamicProgramming.h">
