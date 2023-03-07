@@ -8,29 +8,17 @@ void p2156()
 {
 	int N;
 	scanf("%d", &N);
-	vector<int> wine(N, 0);
-	for (auto& s : wine) scanf("%d", &s);
+	vector<int> wine(N+1, 0);
+	vector<int> DP(N+1, 0);
+	for (int i = 1; i <= N; i++) scanf("%d", &wine[i]);
 
-	int a, b, c, d, M = wine[0];
-	for (int i = 1; i < N; i++)
+	DP[1] = wine[1];
+	DP[2] = DP[1] + wine[2];
+	for (int i = 3; i <= N; i++)
 	{
-		if (i == 1)
-		{
-			a = wine[i];
-			b = a + wine[i - 1];
-		}
-		else
-		{
-			c = wine[i - 2] + wine[i];
-			d = a + wine[i];
-
-			wine[i - 1] = max(a, b);
-			M = max(M, wine[i - 1]);
-
-			a = c;
-			b = d;
-		}
+		DP[i] = max(DP[i - 3] + wine[i - 1] + wine[i], DP[i - 2] + wine[i]);
+		DP[i] = max(DP[i - 1], DP[i]);
 	}
 
-	printf("%d\n", (N == 1) ? wine.front() : max(M, max(a, b)));
+	printf("%d\n", DP.back());
 }
