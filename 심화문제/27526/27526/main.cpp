@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <map>
 using namespace std;
 
 int N, M;
@@ -29,6 +30,7 @@ int main()
 	scanf("%d %d", &N, &M);
 	slide.resize(N, vector<int>(M, 0));
 	ptr.resize(N * M, nullptr);
+	map<vector<vector<int>>, int> check;
 
 	for (int i = 1; i <= N; i++)
 		for (int j = 1; j <= M; j++)
@@ -50,6 +52,8 @@ int main()
 				else printf("%d", slide[i][j]);
 			printf("\n");
 		}
+		check[slide]++;
 		run(i);
 	}
+	printf("%d / %zd\n", count, check.size());
 }
