@@ -25,22 +25,23 @@ int main()
 
 	for (int i = 1; i <= N * M; i++) count *= i;
 
-	vector<vector<int>> save(max(4, N * M + 1), vector<int>(0, 0));
-	save[2].emplace_back(0);
-	save[3].emplace_back(1);
-	save[3].emplace_back(0);
+	vector<vector<int>> save(2, vector<int>(0, 0));
+	save[0].emplace_back(0);
+	save[1].emplace_back(1);
+	save[1].emplace_back(0);
 
 	for (int i = 4; i <= N * M; i++)
 	{
+		int a = i % 2, b = 1 - a;
 		int idx = 0;
-		save[i].resize(save[i - 1].size() * i, 0);
+		save[a].resize(save[b].size() * i, 0);
 
-		for (int j = 0; j < save[i - 1].size();)
+		for (int j = 0; j < save[b].size();)
 		{
-			for (int k = i - 2; k >= 0; k--) save[i][idx++] = k;
-			save[i][idx++] = save[i - 1][j++] + 1;
-			for (int k = 0; k <= i - 2; k++) save[i][idx++] = k;
-			save[i][idx++] = save[i - 1][j++];
+			for (int k = i - 2; k >= 0; k--) save[a][idx++] = k;
+			save[a][idx++] = save[b][j++] + 1;
+			for (int k = 0; k <= i - 2; k++) save[a][idx++] = k;
+			save[a][idx++] = save[b][j++];
 		}
 	}
 
@@ -54,7 +55,7 @@ int main()
 			printf("\n");
 		}
 
-		int cur = save[N * M][i % save[N * M].size()];
-		swap(*ptr[cur], *ptr[cur++]);
+		int cur = save[(N * M) % 2][i % save[(N * M) % 2].size()];
+		swap(*ptr[cur], *ptr[cur+1]);
 	}
 }

@@ -1,0 +1,48 @@
+// 6712 KB, 24 ms
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <bits/stdc++.h>
+#define fastio ios::sync_with_stdio(0), cin.tie(0), cout.tie(0)
+#define ox(t) cout << ((t) ? "YES" : "NO") << '\n'
+using namespace std;
+using ll = long long;
+const int N = 2e5 + 1;
+const int MAXV = 1e6 + 1;
+// template end
+
+vector<int> v(N);
+int cnt[1000005];
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    int k = ceil(m * 9 / (double)10);
+    for (int i = 0; i < n; i++) cin >> v[i];
+    memset(&cnt, 0, sizeof(cnt));
+    for (int i = 0; i < m; i++) {
+        cnt[v[i]]++;
+    }
+    bool flag = false;
+    for (int i = 1; i <= MAXV; i++) {
+        if (cnt[i] >= k) flag = true;
+    }
+    // initially checking process end
+
+    for (int i = m; i < n; i++) {
+        int l = i - m, r = i;
+        cnt[v[l]]--;
+        cnt[v[r]]++;
+        if (cnt[v[r]] >= k) {
+            flag = true;
+            break;
+        }
+    }
+    ox(flag);
+}
+
+int main() {
+    fastio;
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "rt", stdin);
+#endif
+    solve();
+}
