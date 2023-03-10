@@ -9,5 +9,7 @@ void p2156();
 void p2579();
 void p9184();
 void p9461();
+void p10844();
 void p11053();
+void p11054();
 void p24416();
