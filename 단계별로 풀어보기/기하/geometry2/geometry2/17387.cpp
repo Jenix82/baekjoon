@@ -1,23 +1,19 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <algorithm>
-#include <stdlib.h>
-#define int long long
-#define double long double
+#define int		long long
+#define double	long double
 using namespace std;
 
-void p20149()
+void p17387()
 {
 	double x, y, t1, t2;
 	int x1, y1, x2, y2, x3, y3, x4, y4;
 	scanf("%lld %lld %lld %lld", &x1, &y1, &x2, &y2);
 	scanf("%lld %lld %lld %lld", &x3, &y3, &x4, &y4);
 
-	int A = y2 - y1;
-	int B = x1 - x2;
+	int A = y2 - y1, B = x1 - x2;
 	int E = x2 * y1 - x1 * y2;
-	int C = y4 - y3;
-	int D = x3 - x4;
+	int C = y4 - y3, D = x3 - x4;
 	int F = x4 * y3 - x3 * y4;
 	int deno = A * D - B * C;
 
@@ -26,17 +22,10 @@ void p20149()
 	{
 		x = (B * F - E * D) / (double)deno;
 		y = (E * C - A * F) / (double)deno;
-
 		t1 = (x1 != x2) ? (x - x1) / (x2 - x1) : (y - y1) / (y2 - y1);
 		t2 = (x3 != x4) ? (x - x3) / (x4 - x3) : (y - y3) / (y4 - y3);
 
-		if (t1 >= 0 && t1 <= 1 && t2 >= 0 && t2 <= 1)
-		{
-			if (x - (int)x == 0 && y - (int)y == 0) printf("1\n%lld %lld\n", (int)x, (int)y);
-			else if (x - (int)x == 0 && y - (int)y != 0) printf("1\n%lld %.16Lf\n", (int)x, y);
-			else if (x - (int)x != 0 && y - (int)y == 0) printf("1\n%.16Lf %lld\n", x, (int)y);
-			else if (x - (int)x != 0 && y - (int)y != 0) printf("1\n%.16Lf %.16Lf\n", x, y);
-		}
+		if (t1 >= 0 && t1 <= 1 && t2 >= 0 && t2 <= 1) printf("1\n");
 		else printf("0\n");
 	}
 	else
@@ -54,15 +43,8 @@ void p20149()
 				l2 = max(y3, y4) - min(y3, y4);
 			}
 
-			if (d < l1 + l2) printf("1\n");
-			else if (d > l1 + l2) printf("0\n");
-			else
-			{
-				if (x1 == x3 && y1 == y3) printf("1\n%lld %lld\n", x1, y1);
-				else if (x1 == x4 && y1 == y4) printf("1\n%lld %lld\n", x1, y1);
-				else if (x2 == x3 && y2 == y3) printf("1\n%lld %lld\n", x2, y2);
-				else if (x2 == x4 && y2 == y4) printf("1\n%lld %lld\n", x2, y2);
-			}
+			if (d > l1 + l2) printf("0\n");
+			else printf("1\n");
 		}
 		else printf("0\n");
 	}
