@@ -57,6 +57,12 @@
     <ClCompile Include="11054.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="2565.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="12865.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DynamicProgramming.h">
